@@ -1,0 +1,26 @@
+<div>
+  <h1>
+    Welcome to {{title}} !
+  </h1>
+  <a class="login" [href]="authService.authorizeURL">Login</a>
+</div>
+<div *ngIf="playlist">
+  <h2>⮚ My Playlists</h2>
+  <li *ngFor="let item of playlist.items"><a (click)="showTrack(item.id,item.name,item.owner.id)" target="_blank">{{item.name}}</a>
+  </li>
+  <input #add type="text" (keyup.enter)="newPlaylist(add.value)"><input type="submit" (click)="newPlaylist(add.value)"
+    value="ADD PLAYLIST">
+  <div *ngIf="track">
+    <h3>⮚ Tracks from {{playlistName}}</h3>
+    <li *ngFor="let track of track.items"><a class="delete" (click)="removeTrackfromPlaylist(track.track.uri)"
+        target="_blank">{{track.track.name}} by {{track.track.artists[0].name}}</a></li>
+    <input #searchbar type="text" (keyup.enter)="search(searchbar.value)"><input type="submit"
+      (click)="search(searchbar.value)" value="SEARCH TRACK">
+    <div *ngIf="searchTracks">
+      <h4>⮚ 15 Results for {{searchName}} :</h4>
+      <li *ngFor="let search of searchTracks.tracks.items"><a class="add" (click)="addTrackToPlaylist(search.uri)"
+          title="Click to add me on the Playlist">{{search.name}} by {{search.artists[0].name}}</a></li>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
