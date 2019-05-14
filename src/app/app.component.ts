@@ -61,7 +61,7 @@ export class AppComponent {
       });
     }
   }
-  constructor(private authService: AuthService, private PlaylistService: PlaylistService, private TrackService: TrackService, private addPlaylistService: AddplaylistService, private searchService: SearchtrackService, private addTrackService: AddtrackService, private deleteTrackService: DeletetrackService) {
+  constructor(public authService: AuthService, private PlaylistService: PlaylistService, private TrackService: TrackService, private addPlaylistService: AddplaylistService, private searchService: SearchtrackService, private addTrackService: AddtrackService, private deleteTrackService: DeletetrackService) {
     localStorage.removeItem('ID_Playlist');
     localStorage.removeItem('uri_RemoveTrack');
     localStorage.removeItem('uri_Track');
